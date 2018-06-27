@@ -35,20 +35,30 @@ public class CaixaEletronicoController {
 
         for (User user : listUsers){
             if (user.getAgency().equals(agency) && user.getCc().equals(cc)){
-                User destinationUser = user;
-                double destinationUserValue = destinationUser.getDisponibleValue();
+                double destinationUserValue = user.getDisponibleValue();
                 double currentUserValue = CurrentApplication
                         .getInstance()
                         .getLoggedUser()
                         .getDisponibleValue();
                 CurrentApplication.getInstance().getLoggedUser().setDisponibleValue(currentUserValue - amount);
-                destinationUser.setDisponibleValue(destinationUserValue + amount);
+                user.setDisponibleValue(destinationUserValue + amount);
                 return true;
             }
         }
+        return false;
     }
 
-    public boolean depositCash(){
-        return true;
+    public boolean depositCash(String agency, String cc, double amount){
+        LoginData loginData = new LoginData();
+        ArrayList<User> listUsers = loginData.getListUsers();
+
+        for (User user : listUsers){
+            if (user.getAgency().equals(agency) && user.getCc().equals(cc)){
+                double destinationUserValue = user.getDisponibleValue();
+                user.setDisponibleValue(destinationUserValue + amount);
+                return true;
+            }
+        }
+        return false;
     }
 }
