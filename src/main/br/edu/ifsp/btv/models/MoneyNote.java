@@ -1,4 +1,4 @@
-package br.edu.ifsp.btv.Controllers;
+package br.edu.ifsp.btv.models;
 
 public class MoneyNote {
     double value;

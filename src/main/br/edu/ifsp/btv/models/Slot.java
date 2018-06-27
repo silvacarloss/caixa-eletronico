@@ -1,14 +1,14 @@
-package br.edu.ifsp.btv.Controllers;
+package br.edu.ifsp.btv.models;
 
 import java.util.List;
 
-public class Dispenser {
+public class Slot {
 
     private double withdrawLimit;
     private double disponibleAmount;
     private List<MoneyNote> availableNotes;
 
-    Dispenser(double withdrawLimit, double disponibleAmount, List<MoneyNote> moneyNotes){
+    public Slot(double withdrawLimit, double disponibleAmount, List<MoneyNote> moneyNotes){
         this.withdrawLimit = withdrawLimit;
         this.disponibleAmount = disponibleAmount;
         this.availableNotes = moneyNotes;
@@ -38,4 +38,5 @@ public class Dispenser {
         this.availableNotes = availableNotes;
     }
 
+    public double getMoneyQuantity(){ return 0.0; }
 }
