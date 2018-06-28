@@ -1,6 +1,6 @@
-package br.edu.ifsp.btv.constants;
+package main.br.edu.ifsp.btv.constants;
 
-import br.edu.ifsp.btv.models.User;
+import main.br.edu.ifsp.btv.models.User;
 
 import java.util.ArrayList;
 

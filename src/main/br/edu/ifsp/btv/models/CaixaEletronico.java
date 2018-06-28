@@ -1,4 +1,4 @@
-package br.edu.ifsp.btv.models;
+package main.br.edu.ifsp.btv.models;
 
 public class CaixaEletronico {
 	Slot slot;

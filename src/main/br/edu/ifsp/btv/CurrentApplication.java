@@ -1,11 +1,14 @@
-package br.edu.ifsp.btv;
+package main.br.edu.ifsp.btv;
 
-import br.edu.ifsp.btv.models.User;
+import java.util.ArrayList;
+
+import main.br.edu.ifsp.btv.models.User;
 
 public class CurrentApplication {
 
     private static CurrentApplication instance;
-    private User loggedUser;
+    private static User loggedUser = null;
+    private static ArrayList<User> userList;
 
     private CurrentApplication(){
 
@@ -25,4 +28,12 @@ public class CurrentApplication {
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
     }
+
+	public ArrayList<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(ArrayList<User> userList) {
+		CurrentApplication.userList = userList;
+	}
 }

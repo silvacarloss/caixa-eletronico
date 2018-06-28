@@ -1,4 +1,4 @@
-package br.edu.ifsp.btv.models;
+package main.br.edu.ifsp.btv.models;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-import br.edu.ifsp.btv.constants.LoginData;
-import br.edu.ifsp.btv.controllers.CaixaEletronicoController;
-import br.edu.ifsp.btv.models.User;
+import main.br.edu.ifsp.btv.constants.LoginData;
+import main.br.edu.ifsp.btv.controllers.CaixaEletronicoController;
+import main.br.edu.ifsp.btv.models.User;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
