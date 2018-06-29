@@ -96,7 +96,9 @@ public class CaixaEletronicoController {
 		double wholeValue = withdrawnValue;
 		User user = CurrentApplication.getInstance().getLoggedUser();
 		double userDisponibleValue = CurrentApplication.getInstance().getLoggedUser().getDisponibleValue();
-		
+		if(userDisponibleValue < withdrawnValue) {
+			return false;
+		}
 		for (double valueNote : CurrentApplication.getInstance().getBanknotes()) {
 			if(withdrawnValue >= valueNote){
 				double retrievedValue = withdrawnValue / valueNote;
