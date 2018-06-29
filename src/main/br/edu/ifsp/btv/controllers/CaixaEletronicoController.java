@@ -5,6 +5,7 @@ import main.br.edu.ifsp.btv.constants.LoginData;
 import main.br.edu.ifsp.btv.models.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,7 @@ public class CaixaEletronicoController {
         loginData.fillLoginDataUserList();
         CurrentApplication.getInstance().setUserList(loginData.getListUsers());
         ArrayList<User> listUsers = loginData.getListUsers();
-
+        
         for (User user : listUsers){
             if (user.getPassword().equals(password) &&
                     user.getAgency().equals(agency) &&
@@ -89,4 +90,35 @@ public class CaixaEletronicoController {
         
         return false;
     }
+    
+	public boolean withdraw(double withdrawnValue) {
+		HashMap<String, Double> retrievedBankCash = new HashMap<String, Double>();
+		double wholeValue = withdrawnValue;
+		User user = CurrentApplication.getInstance().getLoggedUser();
+		double userDisponibleValue = CurrentApplication.getInstance().getLoggedUser().getDisponibleValue();
+		
+		for (double valueNote : CurrentApplication.getInstance().getBanknotes()) {
+			if(withdrawnValue >= valueNote){
+				double retrievedValue = withdrawnValue / valueNote;
+				retrievedBankCash.put(String.valueOf(valueNote), retrievedValue);
+				withdrawnValue = withdrawnValue % valueNote;
+			}
+		}
+		
+		if(withdrawnValue > 0) {
+			JOptionPane.showMessageDialog(null, 
+					"Não foi possível retirar todo o dinheiro solicitado, faltaram R$: " 
+							+ Double.toString(withdrawnValue), 
+					"Erro", 
+					JOptionPane.INFORMATION_MESSAGE);
+		}else {
+			JOptionPane.showMessageDialog(null, 
+					"Quantia retirada com sucesso. ", 
+					"Erro", 
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		user.setDisponibleValue((userDisponibleValue - wholeValue) + withdrawnValue);
+		updateActualUser(user);
+		return true;
+	}
 }

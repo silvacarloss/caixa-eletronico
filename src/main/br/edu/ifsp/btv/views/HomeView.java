@@ -66,8 +66,13 @@ public class HomeView extends JFrame {
 		});
 		
 		JButton btnWithdraw = new JButton("Sacar");
-		
-		JButton btnExtrato = new JButton("Extrato");
+		btnWithdraw.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				WithdrawView withdraw = new WithdrawView();
+				withdraw.show();
+				dispose();
+			}
+		});
 		
 		JLabel lblAgency = new JLabel("Agência: " + currentUser.getAgency());
 		
@@ -93,7 +98,7 @@ public class HomeView extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(20)
 							.addComponent(lblClient)
-							.addPreferredGap(ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
 							.addComponent(btnSair))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(320)
@@ -101,15 +106,14 @@ public class HomeView extends JFrame {
 								.addComponent(lblAgency)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 									.addComponent(lblSaldo, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(lblCc, Alignment.LEADING))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(87)
-							.addComponent(btnTransfer)
-							.addGap(18)
-							.addComponent(btnWithdraw, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnExtrato, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(lblCc, Alignment.LEADING)))))
 					.addContainerGap())
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(160, Short.MAX_VALUE)
+					.addComponent(btnTransfer)
+					.addGap(18)
+					.addComponent(btnWithdraw, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+					.addGap(143))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -124,12 +128,11 @@ public class HomeView extends JFrame {
 					.addComponent(lblCc)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblSaldo)
-					.addPreferredGap(ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+					.addGap(47)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnTransfer)
-						.addComponent(btnWithdraw)
-						.addComponent(btnExtrato))
-					.addGap(55))
+						.addComponent(btnWithdraw))
+					.addContainerGap(57, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}

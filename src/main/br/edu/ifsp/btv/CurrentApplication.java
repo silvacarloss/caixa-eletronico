@@ -1,6 +1,7 @@
 package main.br.edu.ifsp.btv;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import main.br.edu.ifsp.btv.models.User;
 
@@ -9,7 +10,9 @@ public class CurrentApplication {
     private static CurrentApplication instance;
     private static User loggedUser = null;
     private static ArrayList<User> userList;
-
+    private static Integer[] bankNotes = { };
+    private static HashMap<String, Double> availableNotes;
+    
     private CurrentApplication(){
 
     }
@@ -35,5 +38,21 @@ public class CurrentApplication {
 
 	public void setUserList(ArrayList<User> userList) {
 		CurrentApplication.userList = userList;
+	}
+	
+	public void setBanknotes(Integer[] notes) {
+		this.bankNotes = notes;
+	}
+
+	public Integer[] getBanknotes() {
+		return bankNotes;
+	}
+
+	public HashMap<String, Double> getAvailableNotes() {
+		return availableNotes;
+	}
+
+	public void setAvailableNotes(HashMap<String, Double> availableNotes) {
+		CurrentApplication.availableNotes = availableNotes;
 	}
 }

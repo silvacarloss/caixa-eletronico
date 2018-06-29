@@ -1,11 +1,14 @@
 package main.br.edu.ifsp.btv.constants;
 
+import main.br.edu.ifsp.btv.CurrentApplication;
 import main.br.edu.ifsp.btv.models.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginData {
 	public static ArrayList<User> listUsers = new ArrayList<>();
+	public static HashMap<String, Double> moneyNotes = new HashMap<String, Double>();
 
 	private static User user1 = new User("Carlos", "12345","001", "001-1", 420.0);
 	private static User user2 = new User("Ademar", "22222","001", "002-1", 220.0);
@@ -30,5 +33,15 @@ public class LoginData {
 	public User searchUser(){
 		User user = null;
 		return user;
+	}
+	
+	public void fillMoneyNotes() {
+		Integer[] values = {100, 50, 20, 10 };
+		CurrentApplication.getInstance().setBanknotes(values);
+		for(Integer value : CurrentApplication.getInstance().getBanknotes()) {
+			moneyNotes.put(String.valueOf(value), 10.0);
+		}
+		CurrentApplication.getInstance().setAvailableNotes(moneyNotes);
+		
 	}
 }

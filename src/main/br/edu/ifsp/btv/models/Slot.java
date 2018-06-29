@@ -1,25 +1,16 @@
 package main.br.edu.ifsp.btv.models;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Slot {
 
-    private double withdrawLimit;
     private double disponibleAmount;
-    private List<MoneyNote> availableNotes;
+    private HashMap<String, Double> availableNotes;
 
-    public Slot(double withdrawLimit, double disponibleAmount, List<MoneyNote> moneyNotes){
-        this.withdrawLimit = withdrawLimit;
+    public Slot(double withdrawLimit, double disponibleAmount, HashMap<String, Double> moneyNotes){
         this.disponibleAmount = disponibleAmount;
         this.availableNotes = moneyNotes;
-    }
-
-    public double getWithdrawLimit() {
-        return withdrawLimit;
-    }
-
-    public void setWithdrawLimit(double withdrawLimit) {
-        this.withdrawLimit = withdrawLimit;
     }
 
     public double getDisponibleAmount() {
@@ -30,11 +21,11 @@ public class Slot {
         this.disponibleAmount = disponibleAmount;
     }
 
-    public List<MoneyNote> getAvailableNotes() {
+    public HashMap<String, Double> getAvailableNotes() {
         return availableNotes;
     }
 
-    public void setAvailableNotes(List<MoneyNote> availableNotes) {
+    public void setAvailableNotes(HashMap<String, Double> availableNotes) {
         this.availableNotes = availableNotes;
     }
 
